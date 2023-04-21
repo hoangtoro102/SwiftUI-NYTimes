@@ -140,13 +140,9 @@ struct StubArticleService: ArticleService {
 
 struct StubValidationService: ValidationService {
     func validate(email: String) -> AnyPublisher<String, Error> {
-        return Just(email)
-                .setFailureType(to: Error.self)
-                .eraseToAnyPublisher()
+        return Just.withErrorType("", Error.self)
     }
     func validate(password: String) -> AnyPublisher<String, Error> {
-        return Just(password)
-                .setFailureType(to: Error.self)
-                .eraseToAnyPublisher()
+        return Just.withErrorType("", Error.self)
     }
 }

@@ -11,7 +11,6 @@ struct LoginView: View {
     @EnvironmentObject var appRouter: AppRouter
     @ObservedObject private(set) var viewModel: ViewModel
     @State private var isShowingRegisterView = false
-    let inspection = Inspection<Self>()
     
     var body: some View {
         NavigationView {
