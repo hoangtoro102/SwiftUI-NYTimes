@@ -41,14 +41,13 @@ extension LoginView {
             let cancelBag = CancelBag()
             container.services.validationService
                 .validate(email: state.email)
-                .sink { [weak self] completion in
-                    switch completion {
-                    case .finished: break
-                    case .failure(let error):
-                        self?.state.errorEmail = error.localizedDescription
+                .sinkToResult { [weak self] result in
+                    switch result {
+                    case .success(_):
+                        self?.state.errorEmail = ""
+                    case .failure(let err):
+                        self?.state.errorEmail = err.localizedDescription
                     }
-                } receiveValue: { [weak self] value in
-                    self?.state.errorEmail = ""
                 }
                 .store(in: cancelBag)
         }
@@ -57,14 +56,13 @@ extension LoginView {
             let cancelBag = CancelBag()
             container.services.validationService
                 .validate(password: state.password)
-                .sink { [weak self] completion in
-                    switch completion {
-                    case .finished: break
-                    case .failure(let error):
-                        self?.state.errorPassword = error.localizedDescription
+                .sinkToResult { [weak self] result in
+                    switch result {
+                    case .success(_):
+                        self?.state.errorPassword = ""
+                    case .failure(let err):
+                        self?.state.errorPassword = err.localizedDescription
                     }
-                } receiveValue: { [weak self] value in
-                    self?.state.errorPassword = ""
                 }
                 .store(in: cancelBag)
         }
