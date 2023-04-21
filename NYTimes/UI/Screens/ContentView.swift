@@ -15,7 +15,7 @@ struct ContentView: View {
             if viewModel.isRunningTests {
                 Text("Running unit tests")
             } else {
-                MainView(viewModel: .init(container: viewModel.container))
+                LoginView(viewModel: .init(container: viewModel.container))
             }
         }
     }
