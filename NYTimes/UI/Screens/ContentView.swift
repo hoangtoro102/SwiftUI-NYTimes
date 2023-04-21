@@ -7,7 +7,19 @@
 
 import SwiftUI
 
+class AppRouter: ObservableObject {
+    @Published var rootView: AppRootView = .login
+}
+
+extension AppRouter {
+    enum AppRootView {
+        case login
+        case main
+    }
+}
+
 struct ContentView: View {
+    @StateObject var appRouter = AppRouter()
     @ObservedObject private(set) var viewModel: ViewModel
     
     var body: some View {
@@ -15,8 +27,19 @@ struct ContentView: View {
             if viewModel.isRunningTests {
                 Text("Running unit tests")
             } else {
-                LoginView(viewModel: .init(container: viewModel.container))
+                rootView
+                    .environmentObject(appRouter)
             }
+        }
+    }
+    
+    @ViewBuilder
+    var rootView: some View {
+        switch appRouter.rootView {
+        case .login:
+            LoginView(viewModel: .init(container: viewModel.container))
+        case .main:
+            MainView(viewModel: .init(container: viewModel.container))
         }
     }
 }
