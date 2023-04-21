@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C26047E829F23DBF0086334C /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26047E729F23DBF0086334C /* ValidationService.swift */; };
+		C26047EA29F243AD0086334C /* ValidationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26047E929F243AD0086334C /* ValidationUseCase.swift */; };
+		C26047EC29F246670086334C /* String+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26047EB29F246670086334C /* String+Validate.swift */; };
 		C272DA3929F12583001F5D3D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272DA3829F12583001F5D3D /* LoginView.swift */; };
 		C272DA3B29F12654001F5D3D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272DA3A29F12654001F5D3D /* LoginViewModel.swift */; };
 		C272DA3D29F12B0B001F5D3D /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272DA3C29F12B0B001F5D3D /* TextFieldView.swift */; };
@@ -84,6 +87,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C26047E729F23DBF0086334C /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
+		C26047E929F243AD0086334C /* ValidationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUseCase.swift; sourceTree = "<group>"; };
+		C26047EB29F246670086334C /* String+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validate.swift"; sourceTree = "<group>"; };
 		C272DA3829F12583001F5D3D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C272DA3A29F12654001F5D3D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C272DA3C29F12B0B001F5D3D /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
@@ -414,6 +420,7 @@
 				CDA9A7BA287EB1BD003FB086 /* PopularArticlesUseCase.swift */,
 				CDA9A7BC287EB1C8003FB086 /* SearchArticlesUseCase.swift */,
 				CD765EA52999D93C00445D67 /* PopularArticlesDBUseCase.swift */,
+				C26047E929F243AD0086334C /* ValidationUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -428,6 +435,7 @@
 				CD765EA12999D02600445D67 /* LazyList.swift */,
 				CD765EA7299A0C3E00445D67 /* Store.swift */,
 				CD765EAE299B29AA00445D67 /* Publisher+WeakAssign.swift */,
+				C26047EB29F246670086334C /* String+Validate.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -446,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				CDA9A7C8287EBE0C003FB086 /* ArticleService.swift */,
+				C26047E729F23DBF0086334C /* ValidationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -588,7 +597,9 @@
 				CD53235B287FC27900EBA06B /* DisplayItem.swift in Sources */,
 				CD765E9D2999CF1400445D67 /* CoreDataHelpers.swift in Sources */,
 				CDA9A7E2287EEB97003FB086 /* ActivityIndicatorView.swift in Sources */,
+				C26047E829F23DBF0086334C /* ValidationService.swift in Sources */,
 				CDA9A7E0287ED05A003FB086 /* PoplularResult.swift in Sources */,
+				C26047EC29F246670086334C /* String+Validate.swift in Sources */,
 				CD72CEF4287EA00500C6720F /* ContentView.swift in Sources */,
 				CD765E9B2999CEFE00445D67 /* CoreDataStack.swift in Sources */,
 				CDA9A7C1287EB57F003FB086 /* NetworkConstants.swift in Sources */,
@@ -602,6 +613,7 @@
 				CDA9A7BD287EB1C8003FB086 /* SearchArticlesUseCase.swift in Sources */,
 				C272DA3F29F12B2B001F5D3D /* ConfirmButtonView.swift in Sources */,
 				CDA9A7E6287EEC67003FB086 /* SearchBar.swift in Sources */,
+				C26047EA29F243AD0086334C /* ValidationUseCase.swift in Sources */,
 				CD72CEF2287EA00500C6720F /* NYTimesApp.swift in Sources */,
 				CD765EAA299A0C9F00445D67 /* AppState.swift in Sources */,
 				CDA9A7C6287EBD67003FB086 /* DependencyInjector.swift in Sources */,

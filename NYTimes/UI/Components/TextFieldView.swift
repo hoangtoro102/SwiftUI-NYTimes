@@ -27,6 +27,7 @@ struct TextFieldView: View {
                 TextField(placeholder, text: $input)
                     .font(.system(size: 13, weight: .bold))
                     .keyboardType(type)
+                    .autocapitalization(.none)
                     .disableAutocorrection(true)
             }
             Divider()

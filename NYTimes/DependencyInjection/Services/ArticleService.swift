@@ -137,3 +137,16 @@ struct StubArticleService: ArticleService {
     func get(articles: LoadableSubject<PageDisplayItem>, type: PopularAPI) {}
     func search(articles: LoadableSubject<PageDisplayItem>, text: String) {}
 }
+
+struct StubValidationService: ValidationService {
+    func validate(email: String) -> AnyPublisher<String, Error> {
+        return Just(email)
+                .setFailureType(to: Error.self)
+                .eraseToAnyPublisher()
+    }
+    func validate(password: String) -> AnyPublisher<String, Error> {
+        return Just(password)
+                .setFailureType(to: Error.self)
+                .eraseToAnyPublisher()
+    }
+}

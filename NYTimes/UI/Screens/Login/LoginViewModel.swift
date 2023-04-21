@@ -36,5 +36,37 @@ extension LoginView {
         init(container: DIContainer) {
             self.container = container
         }
+        
+        func validateEmail() {
+            let cancelBag = CancelBag()
+            container.services.validationService
+                .validate(email: state.email)
+                .sink { [weak self] completion in
+                    switch completion {
+                    case .finished: break
+                    case .failure(let error):
+                        self?.state.errorEmail = error.localizedDescription
+                    }
+                } receiveValue: { [weak self] value in
+                    self?.state.errorEmail = ""
+                }
+                .store(in: cancelBag)
+        }
+        
+        func validatePassword() {
+            let cancelBag = CancelBag()
+            container.services.validationService
+                .validate(password: state.password)
+                .sink { [weak self] completion in
+                    switch completion {
+                    case .finished: break
+                    case .failure(let error):
+                        self?.state.errorPassword = error.localizedDescription
+                    }
+                } receiveValue: { [weak self] value in
+                    self?.state.errorPassword = ""
+                }
+                .store(in: cancelBag)
+        }
     }
 }

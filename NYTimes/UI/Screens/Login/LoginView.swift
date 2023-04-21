@@ -37,7 +37,7 @@ struct LoginView: View {
                               error: $viewModel.state.errorEmail,
                               input: $viewModel.state.email)
                 .onChange(of: viewModel.state.email) { newValue in
-
+                    viewModel.validateEmail()
                 }
                 TextFieldView(description: "Password",
                               placeholder: "Password",
@@ -46,7 +46,7 @@ struct LoginView: View {
                               input: $viewModel.state.password)
                 .padding(.bottom, 45)
                 .onChange(of: viewModel.state.password) { newValue in
-
+                    viewModel.validatePassword()
                 }
                 ConfirmButtonView(title: "Login", isEnable: viewModel.state.isValid) {
                     appRouter.rootView = .main
