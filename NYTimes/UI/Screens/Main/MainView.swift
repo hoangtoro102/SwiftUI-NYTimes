@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject var appRouter: AppRouter
     @ObservedObject private(set) var viewModel: ViewModel
     let inspection = Inspection<Self>()
     
@@ -16,6 +17,13 @@ struct MainView: View {
             NavigationView {
                 self.content
                     .navigationBarTitle("NYT", displayMode: .inline)
+                    .toolbar {
+                        Button("Logout") {
+                            appRouter.route = .login
+                        }
+                        .font(.system(size: 13))
+                        .foregroundColor(.black)
+                    }
             }
             .navigationViewStyle(.stack)
         }

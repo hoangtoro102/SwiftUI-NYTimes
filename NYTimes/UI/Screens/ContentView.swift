@@ -8,7 +8,7 @@
 import SwiftUI
 
 class AppRouter: ObservableObject {
-    @Published var route: AppRoute = .main
+    @Published var route: AppRoute = .login
 }
 
 extension AppRouter {
