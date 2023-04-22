@@ -33,19 +33,21 @@ private extension MainView {
     func loadedView() -> some View {
         List {
             Section(header: Text("Search")) {
-                NavigationLink("Search Articles") {
-                    SearchView(viewModel: .init(container: viewModel.container))
-                }
+                NavigationLink(
+                    destination: SearchView(viewModel: .init(container: viewModel.container)),
+                    tag: "",
+                    selection: $viewModel.routingState.searchText) {
+                        Text("Search Articles")
+                    }
             }
             Section(header: Text("Popular")) {
-                NavigationLink("Most Viewed") {
-                    listView(type: .mostViewed)
-                }
-                NavigationLink("Most Shared") {
-                    listView(type: .mostShared)
-                }
-                NavigationLink("Most Emailed") {
-                    listView(type: .mostEmailed)
+                ForEach(PopularAPI.allCases) { type in
+                    NavigationLink(
+                        destination: listView(type: type),
+                        tag: type,
+                        selection: $viewModel.routingState.type) {
+                            Text(type.name)
+                        }
                 }
             }
         }

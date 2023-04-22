@@ -48,7 +48,7 @@ struct LoginView: View {
                     viewModel.validatePassword()
                 }
                 ConfirmButtonView(title: "Login", isEnable: viewModel.state.isValid) {
-                    appRouter.rootView = .main
+                    appRouter.route = .main
                 }
                 .padding(.top, 62)
                 .padding(.bottom, 62)

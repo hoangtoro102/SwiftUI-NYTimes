@@ -12,12 +12,8 @@ import Combine
 
 extension MainView {
     struct Routing: Equatable {
-        enum Route {
-            case search
-            case popular
-        }
-        
-        var route: Route = .search
+        var searchText: String?
+        var type: PopularAPI?
     }
 }
 

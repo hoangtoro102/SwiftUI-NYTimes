@@ -8,11 +8,11 @@
 import SwiftUI
 
 class AppRouter: ObservableObject {
-    @Published var rootView: AppRootView = .login
+    @Published var route: AppRoute = .main
 }
 
 extension AppRouter {
-    enum AppRootView {
+    enum AppRoute {
         case login
         case main
     }
@@ -35,7 +35,7 @@ struct ContentView: View {
     
     @ViewBuilder
     var rootView: some View {
-        switch appRouter.rootView {
+        switch appRouter.route {
         case .login:
             LoginView(viewModel: .init(container: viewModel.container))
         case .main:
