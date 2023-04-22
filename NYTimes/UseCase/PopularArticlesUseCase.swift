@@ -36,10 +36,22 @@ struct DefaultPopularArticlesUseCase: PopularArticlesUseCase {
 typealias PopularAPI = DefaultPopularArticlesUseCase.API
 
 extension DefaultPopularArticlesUseCase {
-    enum API {
+    enum API: String, CaseIterable, Identifiable {
         case mostViewed
         case mostShared
         case mostEmailed
+        
+        var id: Self { self }
+        var name: String {
+            switch self {
+            case .mostViewed:
+                return "Most Viewed"
+            case .mostShared:
+                return "Most Shared"
+            case .mostEmailed:
+                return "Most Emailed"
+            }
+        }
     }
 }
 

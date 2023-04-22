@@ -14,7 +14,10 @@ struct AppEnvironment {
         let session = configuredURLSession()
         let networkUseCases = configuredNetworkUseCases(session: session)
         let dbUseCases = configuredDBRepositories()
-        let services = configuredServices(networkUseCases: networkUseCases, dbUseCases: dbUseCases)
+        let validationUseCases = configuredValidationUseCases()
+        let services = configuredServices(networkUseCases: networkUseCases,
+                                          dbUseCases: dbUseCases,
+                                          validationUsecase: validationUseCases)
         let appState = Store<AppState>(AppState())
         let diContainer = DIContainer(appState: appState, services: services)
         return AppEnvironment(container: diContainer)
@@ -31,6 +34,11 @@ struct AppEnvironment {
         return URLSession(configuration: configuration)
     }
     
+    private static func configuredValidationUseCases() -> DIContainer.ValidationUseCases {
+        let validationUseCase = DefaultValidationUseCase()
+        return .init(validationUseCase: validationUseCase)
+    }
+    
     private static func configuredDBRepositories() -> DIContainer.DBUseCases {
         let persistentStore = CoreDataStack(version: CoreDataStack.Version.actual)
         let popularDBUseCase = DefaultArticlesDBUseCase(persistentStore: persistentStore)
@@ -43,13 +51,14 @@ struct AppEnvironment {
         return .init(popularUseCase: popularUseCase, searchUseCase: searchUseCase)
     }
     
-    private static func configuredServices(networkUseCases: DIContainer.NetworkUseCases, dbUseCases: DIContainer.DBUseCases) -> DIContainer.Services {
+    private static func configuredServices(networkUseCases: DIContainer.NetworkUseCases, dbUseCases: DIContainer.DBUseCases, validationUsecase: DIContainer.ValidationUseCases) -> DIContainer.Services {
         let articleService = DefaultArticleService(
             popularNetworkUsecase: networkUseCases.popularUseCase,
             popularDBUsecase: dbUseCases.popularUseCase,
             searchUsecase: networkUseCases.searchUseCase
         )
-        return .init(articleService: articleService)
+        let validationService = DefaultValidationService(validationUsecase: validationUsecase.validationUseCase)
+        return .init(articleService: articleService, validationService: validationService)
     }
 }
 
@@ -60,5 +69,8 @@ extension DIContainer {
     }
     struct DBUseCases {
         let popularUseCase: PopularArticlesDBUseCase
+    }
+    struct ValidationUseCases {
+        let validationUseCase: ValidationUseCase
     }
 }

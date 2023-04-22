@@ -8,13 +8,16 @@
 extension DIContainer {
     struct Services {
         let articleService: ArticleService
+        let validationService: ValidationService
         
-        init(articleService: ArticleService) {
+        init(articleService: ArticleService, validationService: ValidationService) {
             self.articleService = articleService
+            self.validationService = validationService
         }
         
         static var stub: Self {
-            .init(articleService: StubArticleService())
+            .init(articleService: StubArticleService(),
+                  validationService: StubValidationService())
         }
     }
 }
